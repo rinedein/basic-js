@@ -14,9 +14,23 @@ const { NotImplementedError } = require('../extensions/index.js');
  * calculateHanoi(9, 4308) => { turns: 511, seconds: 427 }
  *
  */
-function calculateHanoi(/* disksNumber, turnsSpeed */) {
-  throw new NotImplementedError('Not implemented');
-  // remove line with error and write your code here
+function calculateHanoi(disksNumber, turnsSpeed) {
+  let turns;
+  switch (disksNumber) {
+    case 1:
+      turns = 1;
+      break;
+    case 2:
+      turns = 3;
+      break;
+    case 3:
+      turns = 7;
+      break;
+    default:
+      turns = Math.pow(2, disksNumber) - 1;
+  }
+  const seconds = Math.floor(turns * 3600 / turnsSpeed);
+  return { turns, seconds };
 }
 
 module.exports = {
